@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Home, PaintBucket, Tool, Ruler, HardHat, Truck, Paint, Palette } from "lucide-react";
+import { Building2, Home, PaintBucket, Tool, Ruler, HardHat, Truck, Brush, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Services = () => {
@@ -49,7 +49,7 @@ const Services = () => {
       features: ["Material Sourcing", "Delivery Services", "Storage Solutions"]
     },
     {
-      icon: <Paint size={32} />,
+      icon: <Brush size={32} />,
       title: "Painting",
       description: "Professional painting services for interior and exterior surfaces",
       features: ["Color Consultation", "Surface Preparation", "Quality Finishing"]
