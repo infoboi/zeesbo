@@ -1,9 +1,8 @@
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-
-<lov-add-dependency>framer-motion@latest</lov-add-dependency>
 
 const Portfolio = () => {
   const projects = [
@@ -25,7 +24,6 @@ const Portfolio = () => {
       image: "/placeholder.svg",
       description: "Careful restoration of a heritage building's facade",
     },
-    // Add more projects as needed
   ];
 
   return (
@@ -72,6 +70,7 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

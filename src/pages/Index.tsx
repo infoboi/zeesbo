@@ -1,16 +1,40 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Building2, HardHat, Truck, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Index = () => {
   const features = [
     "Professional Team",
-    "Quality Materials",
+    "Quality Materials", 
     "On-time Delivery",
     "Custom Solutions"
+  ];
+
+  const stats = [
+    { icon: <Building2 className="w-8 h-8 text-primary" />, value: "500+", label: "Projects Completed" },
+    { icon: <HardHat className="w-8 h-8 text-primary" />, value: "150+", label: "Expert Staff" },
+    { icon: <Truck className="w-8 h-8 text-primary" />, value: "20+", label: "Years Experience" },
+    { icon: <Home className="w-8 h-8 text-primary" />, value: "1000+", label: "Happy Clients" }
+  ];
+
+  const testimonials = [
+    {
+      quote: "Working with ZEESBO was a fantastic experience. They brought our vision to life with exceptional quality.",
+      author: "Sarah Johnson",
+      role: "Homeowner"
+    },
+    {
+      quote: "The attention to detail and professionalism shown by the team was outstanding.",
+      author: "Michael Brown",
+      role: "Project Manager"
+    },
+    {
+      quote: "Their innovative approach to construction challenges sets them apart from others in the industry.",
+      author: "David Wilson",
+      role: "Architect"
+    }
   ];
 
   return (
@@ -146,6 +170,63 @@ const Index = () => {
               >
                 <h3 className="font-display text-xl text-neutral-900 mb-2">{item.title}</h3>
                 <p className="text-neutral-900/80">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 bg-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="flex justify-center mb-4">{stat.icon}</div>
+                <div className="font-display text-3xl text-neutral-900 mb-2">{stat.value}</div>
+                <div className="text-neutral-600">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="text-center mb-16">
+            <h2 className="font-display text-3xl text-neutral-900 mb-4">What Our Clients Say</h2>
+            <p className="text-neutral-900/80">Hear from those who have experienced our exceptional service</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-neutral-50 p-6 rounded-lg"
+              >
+                <p className="text-neutral-900/80 mb-4 italic">"{testimonial.quote}"</p>
+                <div className="font-medium text-neutral-900">{testimonial.author}</div>
+                <div className="text-primary text-sm">{testimonial.role}</div>
               </motion.div>
             ))}
           </div>
