@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Home, PaintBucket, Tool, Ruler, HardHat, Truck, Brush, Palette } from "lucide-react";
+import { Building2, Home, PaintBucket, Wrench, Ruler, HardHat, Truck, Brush, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Services = () => {
@@ -25,7 +25,7 @@ const Services = () => {
       features: ["Facade Renovation", "Landscaping", "Outdoor Living Spaces"]
     },
     {
-      icon: <Tool size={32} />,
+      icon: <Wrench size={32} />,
       title: "Maintenance",
       description: "Keep your property in perfect condition with our maintenance services",
       features: ["Regular Inspections", "Repairs", "Upgrades"]
