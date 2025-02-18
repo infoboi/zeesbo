@@ -63,13 +63,55 @@ const Index = () => {
     { delay: 0.6, height: "h-56" }
   ];
 
+  const projects = [
+    {
+      title: "Modern Office Complex",
+      category: "Commercial",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+      description: "State-of-the-art office building with sustainable features"
+    },
+    {
+      title: "Luxury Residential",
+      category: "Residential",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
+      description: "High-end residential complex with modern amenities"
+    },
+    {
+      title: "Shopping Mall",
+      category: "Commercial",
+      image: "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&q=80",
+      description: "Modern shopping center with innovative design"
+    }
+  ];
+
+  const clients = [
+    {
+      name: "Tech Solutions Inc",
+      logo: "https://via.placeholder.com/150x80",
+      industry: "Technology"
+    },
+    {
+      name: "Green Development",
+      logo: "https://via.placeholder.com/150x80",
+      industry: "Real Estate"
+    },
+    {
+      name: "Future Living",
+      logo: "https://via.placeholder.com/150x80",
+      industry: "Residential"
+    },
+    {
+      name: "Metro Projects",
+      logo: "https://via.placeholder.com/150x80",
+      industry: "Infrastructure"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-neutral-100">
       <Navbar />
       
-      {/* Hero Section with Background Image */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Parallax Effect */}
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -85,7 +127,6 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
 
-        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center lg:text-left">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <motion.div
@@ -141,7 +182,6 @@ const Index = () => {
               </motion.div>
             </motion.div>
 
-            {/* Animated Badge */}
             <motion.div
               initial={{ opacity: 0, rotate: -10 }}
               animate={{ opacity: 1, rotate: 0 }}
@@ -162,7 +202,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -174,8 +213,128 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Company Values Section */}
       <section className="py-24 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl text-neutral-900 mb-4">Featured Projects</h2>
+            <p className="text-neutral-900/80">Discover our latest construction masterpieces</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="group relative overflow-hidden rounded-lg"
+              >
+                <div className="aspect-w-16 aspect-h-9">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="text-sm text-primary-light font-medium">{project.category}</span>
+                  <h3 className="text-xl text-white font-display mt-1">{project.title}</h3>
+                  <p className="text-white/80 text-sm mt-2">{project.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition-all duration-300"
+            >
+              View All Projects <ArrowRight className="ml-2" size={20} />
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="py-24 bg-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl text-neutral-900 mb-4">Our Services</h2>
+            <p className="text-neutral-900/80">Comprehensive construction solutions for every need</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-white p-8 rounded-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="text-primary mb-6">{service.icon}</div>
+                <h3 className="font-display text-xl text-neutral-900 mb-3">{service.title}</h3>
+                <p className="text-neutral-900/80">{service.description}</p>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center mt-4 text-primary hover:text-primary-dark transition-colors duration-200"
+                >
+                  Learn More <ArrowRight className="ml-1" size={16} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl text-neutral-900 mb-4">Our Clients</h2>
+            <p className="text-neutral-900/80">Trusted by industry leaders</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {clients.map((client, index) => (
+              <motion.div
+                key={client.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex flex-col items-center"
+              >
+                <div className="bg-neutral-100 p-6 rounded-lg w-full">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="w-full h-20 object-contain"
+                  />
+                </div>
+                <h3 className="mt-4 font-medium text-neutral-900">{client.name}</h3>
+                <p className="text-sm text-neutral-600">{client.industry}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="py-24 bg-neutral-100">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -205,7 +364,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-24 bg-neutral-100">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -231,7 +389,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="py-24 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
