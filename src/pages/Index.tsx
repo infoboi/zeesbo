@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, CheckCircle2, Building2, HardHat, Truck, Home, Hammer, Award, Shield, Clock } from "lucide-react";
@@ -68,28 +67,45 @@ const Index = () => {
     <div className="min-h-screen bg-neutral-100">
       <Navbar />
       
-      {/* Hero Section with Animation */}
-      <section className="pt-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      {/* Hero Section with Background Image */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Parallax Effect */}
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 z-0"
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80")',
+            }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </motion.div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center lg:text-left">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:w-1/2"
+              className="lg:w-2/3"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="font-display text-5xl md:text-7xl text-neutral-900 leading-tight mb-6"
+                className="font-display text-5xl md:text-7xl text-white leading-tight mb-6"
               >
-                Building Your <br />
+                Building Your{" "}
                 <motion.span
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-primary"
+                  className="text-primary-light"
                 >
                   Vision
                 </motion.span>{" "}
@@ -99,7 +115,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-lg md:text-xl text-neutral-900/80 mb-8 max-w-2xl"
+                className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
               >
                 Premium construction, interior, and exterior services tailored to transform your space into something extraordinary.
               </motion.p>
@@ -108,7 +124,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 mb-12"
+                className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
               >
                 <Link
                   to="/contact"
@@ -118,66 +134,44 @@ const Index = () => {
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center px-6 py-3 border-2 border-primary text-primary rounded-md hover:bg-primary/5 transition-all duration-300"
+                  className="inline-flex items-center px-6 py-3 border-2 border-white text-white rounded-md hover:bg-white/10 transition-all duration-300"
                 >
                   View Our Work
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Construction Animation */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="lg:w-1/2 relative h-[400px]"
+            {/* Animated Badge */}
+            <motion.div
+              initial={{ opacity: 0, rotate: -10 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="lg:w-1/3 bg-white/10 backdrop-blur-lg rounded-full p-8 relative"
             >
-              <div className="flex items-end justify-center gap-4 h-full">
-                {buildingBlocks.map((block, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ 
-                      height: block.height,
-                      opacity: 1 
-                    }}
-                    transition={{
-                      duration: 0.8,
-                      delay: block.delay,
-                      ease: "easeOut"
-                    }}
-                    className={`w-16 bg-primary/20 rounded-t-lg ${block.height}`}
-                  >
-                    <motion.div
-                      initial={{ height: "0%" }}
-                      animate={{ height: "100%" }}
-                      transition={{
-                        duration: 1.2,
-                        delay: block.delay + 0.3,
-                        ease: "easeInOut"
-                      }}
-                      className="w-full bg-primary/40 rounded-t-lg"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-              
-              {/* Animated Construction Icon */}
               <motion.div
-                initial={{ y: -20 }}
-                animate={{ y: [-20, 0, -20] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-0 right-1/4 transform -translate-y-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                className="w-48 h-48 rounded-full border-4 border-primary-light flex items-center justify-center"
               >
-                <Hammer className="w-12 h-12 text-primary" />
+                <div className="text-center">
+                  <HardHat className="w-16 h-16 text-primary-light mx-auto mb-2" />
+                  <span className="text-white font-display text-lg">Excellence in Construction</span>
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="w-1 h-16 bg-white/20 rounded-full relative">
+            <div className="absolute top-0 left-0 w-full h-1/3 bg-primary-light rounded-full animate-pulse" />
+          </div>
+        </motion.div>
       </section>
 
       {/* Company Values Section */}
