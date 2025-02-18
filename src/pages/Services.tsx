@@ -65,20 +65,37 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-neutral-100">
       <Navbar />
-      <section className="pt-32 pb-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80")',
+            }}
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-4xl text-neutral-900 mb-4">Our Services</h2>
-            <p className="text-neutral-900/80 max-w-2xl mx-auto">
-              Comprehensive construction solutions for every aspect of your project
+            <h2 className="font-display text-5xl text-white mb-4">Our Services</h2>
+            <p className="text-white/90 max-w-2xl mx-auto text-lg">
+              Comprehensive construction solutions tailored to your needs
             </p>
           </motion.div>
+        </div>
+      </section>
 
+      {/* Services Grid */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -86,13 +103,13 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-6 bg-neutral-100 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="group p-6 bg-neutral-50 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
                 <h3 className="font-display text-xl text-neutral-900 mb-2">{service.title}</h3>
-                <p className="text-neutral-900/80 mb-4">{service.description}</p>
+                <p className="text-neutral-600 mb-4">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center text-sm text-neutral-700">
@@ -106,6 +123,30 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-primary rounded-lg p-12 text-center"
+          >
+            <h3 className="font-display text-3xl text-white mb-4">Ready to Start Your Project?</h3>
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+              Contact us today to discuss your construction needs and get a free consultation
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 bg-white text-primary rounded-md hover:bg-neutral-100 transition-colors duration-300"
+            >
+              Get in Touch
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
