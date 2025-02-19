@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Building2, Home, PaintBucket, Wrench, Ruler, HardHat, Truck, Brush, Palette, FileSpreadsheet, CalendarDays, DollarSign, Users, BookCheck, CheckCircle2 } from "lucide-react";
@@ -177,9 +178,10 @@ const Services = () => {
   };
 
   const handleSubmit = () => {
+    // Removed the icon property from the toast call
     toast({
       title: "Project Request Submitted!",
-      description: "We'll review your project details and get back to you soon.",
+      description: "We'll review your project details and get back to you soon."
     });
     console.log("Form Data:", formData);
   };
