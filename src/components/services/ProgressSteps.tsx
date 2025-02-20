@@ -18,12 +18,12 @@ export const ProgressSteps = ({ steps, activeStep }: ProgressStepsProps) => {
               animate={{ 
                 opacity: 1, 
                 scale: 1,
-                backgroundColor: index <= activeStep ? "var(--primary)" : "var(--neutral-200)"
+                backgroundColor: index <= activeStep ? "#8B7355" : "#E5E5E5"
               }}
               className={`w-12 h-12 rounded-full flex items-center justify-center mb-2
                 ${index <= activeStep ? 'bg-primary text-white' : 'bg-neutral-200 text-neutral-500'}`}
             >
-              <step.icon size={20} />
+              <step.icon className="w-5 h-5" />
             </motion.div>
             <span className="text-sm text-neutral-600 hidden md:block">{step.title}</span>
           </div>
