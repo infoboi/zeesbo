@@ -23,7 +23,8 @@ export const ProgressSteps = ({ steps, activeStep }: ProgressStepsProps) => {
               className={`w-12 h-12 rounded-full flex items-center justify-center mb-2
                 ${index <= activeStep ? 'bg-primary text-white' : 'bg-neutral-200 text-neutral-500'}`}
             >
-              <step.icon className="w-5 h-5" />
+              {/* Render the icon component with its default size */}
+              <step.icon />
             </motion.div>
             <span className="text-sm text-neutral-600 hidden md:block">{step.title}</span>
           </div>
